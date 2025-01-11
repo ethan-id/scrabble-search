@@ -1,21 +1,45 @@
 'use client';
 
-import {useState, FormEvent} from 'react';
-import {Button, Input, Form} from '@nextui-org/react';
+import {useState, useCallback, ChangeEvent} from 'react';
+import debounce from 'lodash.debounce';
+import {Input} from '@nextui-org/react';
 
 export default function HomePage() {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState<string[]>([]);
 
-    const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        if (!query) return;
-        try {
-            const response = await fetch(`/api/search?prefix=${encodeURIComponent(query)}`);
-            const data = await response.json();
-            setResults(data.results);
-        } catch (error) {
-            console.error(error);
+    /**
+     * Debounced fetch function.
+     * We wrap it with `useCallback` so the same debounced function
+     * instance is used throughout the component's lifecycle.
+     */
+    const debouncedFetch = useCallback(
+        debounce(async (value: string) => {
+            try {
+                const response = await fetch(`/api/search?prefix=${encodeURIComponent(value)}`);
+                const data = await response.json();
+                setResults(data.results || []);
+            } catch (error) {
+                console.error(error);
+            }
+        }, 200), // 300ms delay
+        []
+    );
+
+    /**
+     * Handle input changes.
+     * - Update the `query` state immediately.
+     * - If user typed something, call the debounced fetch function.
+     * - If input is cleared, reset the results.
+     */
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setQuery(value);
+
+        if (value) {
+            debouncedFetch(value);
+        } else {
+            setResults([]);
         }
     };
 
@@ -28,24 +52,16 @@ export default function HomePage() {
                     <p className='text-sm text-gray-600'>Find valid Scrabble words</p>
                 </div>
 
-                {/* Form using NextUI's Form component */}
-                <Form onSubmit={handleSearch} className='mb-8'>
-                    <div className='flex shadow-sm'>
-                        <Input
-                            type='text'
-                            placeholder='Enter prefix...'
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                            className='flex-grow focus:ring-blue-500 focus:border-blue-500'
-                        />
-                        <Button
-                            type='submit'
-                            className='bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
-                        >
-                            Search
-                        </Button>
-                    </div>
-                </Form>
+                {/* Input with onChange handler (no submit button) */}
+                <div className='flex shadow-sm mb-8'>
+                    <Input
+                        type='text'
+                        placeholder='Enter prefix...'
+                        value={query}
+                        onChange={handleChange}
+                        className='flex-grow focus:ring-blue-500 focus:border-blue-500'
+                    />
+                </div>
 
                 {/* Results */}
                 {results.length > 0 && (
