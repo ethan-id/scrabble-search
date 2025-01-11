@@ -8,11 +8,6 @@ export default function HomePage() {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState<string[]>([]);
 
-    /**
-     * Debounced fetch function.
-     * We wrap it with `useCallback` so the same debounced function
-     * instance is used throughout the component's lifecycle.
-     */
     const debouncedFetch = useCallback(
         debounce(async (value: string) => {
             try {
@@ -22,16 +17,10 @@ export default function HomePage() {
             } catch (error) {
                 console.error(error);
             }
-        }, 200), // 300ms delay
+        }, 200),
         []
     );
 
-    /**
-     * Handle input changes.
-     * - Update the `query` state immediately.
-     * - If user typed something, call the debounced fetch function.
-     * - If input is cleared, reset the results.
-     */
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setQuery(value);
