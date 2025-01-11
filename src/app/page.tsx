@@ -44,7 +44,7 @@ export default function HomePage() {
 
     return (
         <div
-            className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-gray-300' : 'bg-gray-100 text-gray-800'} flex flex-col items-center py-12 px-4 transition-colors duration-200`}
+            className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-gray-300' : 'bg-gray-200 text-gray-800'} flex flex-col items-center py-12 px-4 transition-colors duration-200`}
         >
             <div className='flex flex-col items-center w-full'>
                 {/* Theme Toggle */}
@@ -69,7 +69,7 @@ export default function HomePage() {
                         placeholder='Enter prefix...'
                         value={query}
                         onChange={handleChange}
-                        className={`flex-grow min-w-[20vw] ${isDarkMode ? 'bg-gray-800 text-gray-100 border-gray-700' : 'bg-white text-gray-800 border-gray-300'} focus:ring-blue-500 focus:border-blue-500`}
+                        className={`flex-grow p-2 rounded-lg min-w-[20vw] ${isDarkMode ? 'bg-gray-800 text-gray-100 border-gray-700' : 'bg-white text-gray-800 border-gray-300'} focus:ring-blue-500 focus:border-blue-500`}
                     />
                 </div>
 
