@@ -2,7 +2,7 @@
 
 import debounce from 'lodash.debounce';
 import {useState, useCallback, ChangeEvent} from 'react';
-import {ThemeToggle} from '@/components/ThemeToggle';
+import {ThemeToggle} from '@/components/theme-toggle';
 import {Results} from '@/components/results';
 import {Search} from '@/components/search';
 import {Header} from '@/components/header';

@@ -5,14 +5,36 @@ interface HeaderProps {
 }
 
 export const Header: FunctionComponent<HeaderProps> = ({isDarkMode}) => {
+    const scrabble = ['S', 'C', 'R', 'A', 'B', 'B', 'L', 'E'];
+    const search = ['S', 'E', 'A', 'R', 'C', 'H'];
+
     return (
         <div className='text-center mb-8'>
-            <h1 className={`text-4xl font-bold ${isDarkMode ? 'text-blue-400' : 'text-blue-600'} mb-2`}>
-                Scrabble Search
-            </h1>
+            <div className='flex flex-col items-center gap-4 mb-4'>
+                <div className='flex flex-row gap-1'>
+                    {scrabble.map((l, i) => (
+                        <Letter letter={l} key={`scrabble-${i}`} />
+                    ))}
+                </div>
+                <div className='flex flex-row gap-1'>
+                    {search.map((l, i) => (
+                        <Letter letter={l} key={`search-${i}`} />
+                    ))}
+                </div>
+            </div>
             <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 Find valid (English) Scrabble words
             </p>
         </div>
     );
 };
+
+interface LetterProps {
+    letter: string;
+}
+
+const Letter: FunctionComponent<LetterProps> = ({letter}) => (
+    <div className='flex items-center justify-center text-3xl w-12 h-12 p-4 rounded-lg bg-[#FFDC9F] font-semibold text-black shadow-md'>
+        {letter}
+    </div>
+);
