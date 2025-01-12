@@ -11,5 +11,8 @@ A Search Engine for (English) Scrabble Words
 
 ## Roadmap
 
+- [x] Show point values
+- [ ] Add filters/sorting options by point values
 - [ ] Support other languages
 - [ ] Add definitions for words using merriam-webster's API
+- [ ] Replace JSON file of words with SQLite DB

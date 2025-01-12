@@ -1,8 +1,11 @@
 'use client';
 
-import {useState, useCallback, ChangeEvent} from 'react';
 import debounce from 'lodash.debounce';
+import {useState, useCallback, ChangeEvent} from 'react';
 import {ThemeToggle} from '@/components/ThemeToggle';
+import {Results} from '@/components/results';
+import {Search} from '@/components/search';
+import {Header} from '@/components/header';
 
 export default function HomePage() {
     const [query, setQuery] = useState('');
@@ -58,28 +61,9 @@ export default function HomePage() {
                     <ThemeToggle onToggle={handleThemeToggle} />
                 </div>
 
-                <div className='text-center mb-8'>
-                    <h1 className={`text-4xl font-bold ${isDarkMode ? 'text-blue-400' : 'text-blue-600'} mb-2`}>
-                        Scrabble Search
-                    </h1>
-                    <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                        Find valid (English) Scrabble words
-                    </p>
-                </div>
+                <Header isDarkMode={isDarkMode} />
 
-                <div className='flex shadow-sm mb-8 max-w-md w-full'>
-                    <input
-                        type='text'
-                        placeholder='Enter prefix...'
-                        value={query}
-                        onChange={handleChange}
-                        className={`flex-grow p-2 rounded-lg min-w-[20vw] ${
-                            isDarkMode
-                                ? 'bg-gray-800 text-gray-100 border-gray-700'
-                                : 'bg-white text-gray-800 border-gray-300'
-                        } focus:ring-blue-500 focus:border-blue-500`}
-                    />
-                </div>
+                <Search onChange={handleChange} query={query} isDarkMode={isDarkMode} />
 
                 {isLoading ? (
                     <div className='w-full max-w-4xl'>
@@ -88,36 +72,7 @@ export default function HomePage() {
                         </p>
                     </div>
                 ) : results.length > 0 ? (
-                    <div
-                        className={`${
-                            isDarkMode ? 'bg-gray-800' : 'bg-white'
-                        } shadow-md rounded-lg overflow-hidden w-full max-w-4xl`}
-                    >
-                        <h2
-                            className={`text-lg font-semibold ${
-                                isDarkMode ? 'text-gray-100' : 'text-gray-700'
-                            } p-4 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}
-                        >
-                            Results:
-                        </h2>
-                        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 p-4'>
-                            {results.map((word, index) => (
-                                <div
-                                    key={index}
-                                    className={`${
-                                        isDarkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-50 hover:bg-gray-100'
-                                    } rounded p-2 text-center transition-colors`}
-                                >
-                                    <p
-                                        className={`${isDarkMode ? 'text-gray-200' : 'text-gray-800'} truncate`}
-                                        title={word}
-                                    >
-                                        {word}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <Results isDarkMode={isDarkMode} results={results} />
                 ) : (
                     query && (
                         <p className={`text-center mt-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
