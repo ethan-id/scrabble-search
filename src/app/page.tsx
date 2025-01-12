@@ -6,6 +6,7 @@ import {ThemeToggle} from '@/components/theme-toggle';
 import {Results} from '@/components/results';
 import {Search} from '@/components/search';
 import {Header} from '@/components/header';
+import {Spinner} from '@nextui-org/react';
 
 export default function HomePage() {
     const [query, setQuery] = useState('');
@@ -63,13 +64,11 @@ export default function HomePage() {
 
                 <Header isDarkMode={isDarkMode} />
 
-                <Search onChange={handleChange} query={query} isDarkMode={isDarkMode} />
+                <Search onChange={handleChange} query={query} />
 
                 {isLoading ? (
-                    <div className='w-full max-w-4xl'>
-                        <p className={`text-center mt-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                            Loading...
-                        </p>
+                    <div className='flex justify-center items-center w-full h-96'>
+                        <Spinner size='lg' />
                     </div>
                 ) : results.length > 0 ? (
                     <Results isDarkMode={isDarkMode} results={results} />
