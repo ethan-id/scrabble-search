@@ -13,7 +13,7 @@ export const Search: FC<SearchProps> = ({onChange, query}) => {
                 isClearable
                 placeholder='Enter a prefix...'
                 size='lg'
-                value={query}
+                defaultValue={query}
                 onChange={onChange}
                 startContent={<SearchIcon size={18} />}
                 type='search'

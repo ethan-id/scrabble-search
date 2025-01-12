@@ -1,10 +1,10 @@
 'use client';
 
 import {NextUIProvider} from '@nextui-org/react';
-import {FunctionComponent, ReactNode} from 'react';
+import {FC, ReactNode} from 'react';
 
 interface ProvidersProps {
     children: ReactNode;
 }
 
-export const Providers: FunctionComponent<ProvidersProps> = ({children}) => <NextUIProvider>{children}</NextUIProvider>;
+export const Providers: FC<ProvidersProps> = ({children}) => <NextUIProvider>{children}</NextUIProvider>;

@@ -1,10 +1,10 @@
-import {FunctionComponent} from 'react';
+import {FC} from 'react';
 
 interface HeaderProps {
     isDarkMode: boolean;
 }
 
-export const Header: FunctionComponent<HeaderProps> = ({isDarkMode}) => {
+export const Header: FC<HeaderProps> = ({isDarkMode}) => {
     const scrabble = ['S', 'C', 'R', 'A', 'B', 'B', 'L', 'E'];
     const search = ['S', 'E', 'A', 'R', 'C', 'H'];
 
@@ -36,7 +36,7 @@ interface LetterProps {
     letter: string;
 }
 
-const Letter: FunctionComponent<LetterProps> = ({letter}) => (
+const Letter: FC<LetterProps> = ({letter}) => (
     <div className='flex items-center justify-center text-xl md:text-3xl w-10 md:w-12 h-10 md:h-12 p-4 rounded-lg bg-[#FFDC9F] font-semibold text-black shadow-md'>
         {letter}
     </div>

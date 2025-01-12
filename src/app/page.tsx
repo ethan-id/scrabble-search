@@ -54,7 +54,7 @@ export default function HomePage() {
     return (
         <div
             className={`min-h-screen ${
-                isDarkMode ? 'bg-gray-900 text-gray-300' : 'bg-gray-200 text-gray-800'
+                isDarkMode ? 'bg-gray-900 text-gray-300' : 'bg-zinc-300 text-gray-800'
             } flex flex-col items-center py-12 px-4 transition-colors duration-200`}
         >
             <div className='flex flex-col items-center w-full'>
