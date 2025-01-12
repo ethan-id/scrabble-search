@@ -1,12 +1,14 @@
 import {FC} from 'react';
+import {points} from '@/literals/points';
 
 interface WordCardProps {
     word: string;
-    value: number;
     isDarkMode: boolean;
 }
 
-export const WordCard: FC<WordCardProps> = ({word, value, isDarkMode}) => {
+export const WordCard: FC<WordCardProps> = ({word, isDarkMode}) => {
+    const value = word.split('').reduce((sum, char) => sum + points[char.toLowerCase().charCodeAt(0) - 97], 0);
+
     return (
         <div
             className={`${
