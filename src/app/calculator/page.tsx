@@ -11,6 +11,7 @@ export default function CalculatorPage() {
                 </Link>
             </div>
             <Header title='scrabble' subtitle='calculator' />
+            This page is currently under construction!
         </div>
     );
 }
