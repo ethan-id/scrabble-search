@@ -1,12 +1,11 @@
 import {FC} from 'react';
 
 interface HeaderProps {
-    isDarkMode: boolean;
     title: string;
     subtitle: string;
 }
 
-export const Header: FC<HeaderProps> = ({isDarkMode, title, subtitle}) => {
+export const Header: FC<HeaderProps> = ({title, subtitle}) => {
     const heading = title.toUpperCase().split('');
     const subheading = subtitle.toUpperCase().split('');
 
@@ -24,10 +23,8 @@ export const Header: FC<HeaderProps> = ({isDarkMode, title, subtitle}) => {
                     ))}
                 </div>
             </div>
-            <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                Find valid (English) Scrabble words
-            </p>
-            <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className={'text-sm text-gray-600'}>Find valid (English) Scrabble words</p>
+            <p className={'text-xs text-gray-600'}>
                 Not Affiliated with <a href={'https://playscrabble.com/'}>Hasbro&apos;s Scrabble</a>
             </p>
         </div>
