@@ -4,10 +4,11 @@ A Search Engine for (English) Scrabble Words
 
 ## Features
 
-- Words are stored in a (Trie)[] data structure
+- Words are stored in a (Trie)[https://en.wikipedia.org/wiki/Trie] data structure
 - Real-time searching as the user types
-- User's search Input is debounced so that as they type multiple API requests are not made
-- Dark/Light Mode
+    - User's search Input is debounced so that as they type multiple API requests are not made
+- Dark/Light Mode Toggle
+    - Saved between browser sessions using local storage
 
 ## Roadmap
 
