@@ -2,16 +2,16 @@
 
 import debounce from 'lodash.debounce';
 import {useState, useCallback, ChangeEvent} from 'react';
-import {ThemeToggle} from '@/components/theme-toggle';
 import {Results} from '@/components/results';
 import {Search} from '@/components/search';
 import {Header} from '@/components/header';
 import {Spinner} from '@nextui-org/react';
+import Link from 'next/link';
+import CalculateIcon from '@mui/icons-material/Calculate';
 
 export default function HomePage() {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState<string[]>([]);
-    const [isDarkMode, setIsDarkMode] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
     const debouncedFetch = useCallback(
@@ -42,27 +42,20 @@ export default function HomePage() {
         }
     };
 
-    const handleThemeToggle = (isDark: boolean) => {
-        setIsDarkMode(isDark);
-        if (isDark) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    };
-
     return (
         <div
-            className={`min-h-screen ${
-                isDarkMode ? 'bg-gray-900 text-gray-300' : 'bg-zinc-300 text-gray-800'
-            } flex flex-col items-center py-12 px-4 transition-colors duration-200`}
+            className={
+                'min-h-screen bg-zinc-300 text-gray-800 flex flex-col items-center py-12 px-4 transition-colors duration-200'
+            }
         >
             <div className='flex flex-col items-center w-full'>
-                <div className='absolute top-4 right-4'>
-                    <ThemeToggle onToggle={handleThemeToggle} />
+                <div className='absolute flex justify-center items-center top-4 right-4 gap-4'>
+                    <Link href='/calculator'>
+                        <CalculateIcon fontSize={'large'} />
+                    </Link>
                 </div>
 
-                <Header isDarkMode={isDarkMode} />
+                <Header title={'scrabble'} subtitle={'search'} />
 
                 <Search onChange={handleChange} query={query} />
 
@@ -71,13 +64,9 @@ export default function HomePage() {
                         <Spinner size='lg' />
                     </div>
                 ) : results.length > 0 ? (
-                    <Results isDarkMode={isDarkMode} results={results} />
+                    <Results results={results} />
                 ) : (
-                    query && (
-                        <p className={`text-center mt-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                            No words found.
-                        </p>
-                    )
+                    query && <p className={'text-center mt-4 text-gray-600'}>No words found.</p>
                 )}
             </div>
         </div>

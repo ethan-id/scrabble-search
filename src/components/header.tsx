@@ -1,31 +1,30 @@
 import {FC} from 'react';
 
 interface HeaderProps {
-    isDarkMode: boolean;
+    title: string;
+    subtitle: string;
 }
 
-export const Header: FC<HeaderProps> = ({isDarkMode}) => {
-    const scrabble = ['S', 'C', 'R', 'A', 'B', 'B', 'L', 'E'];
-    const search = ['S', 'E', 'A', 'R', 'C', 'H'];
+export const Header: FC<HeaderProps> = ({title, subtitle}) => {
+    const heading = title.toUpperCase().split('');
+    const subheading = subtitle.toUpperCase().split('');
 
     return (
         <div className='text-center mb-8'>
             <div className='flex flex-col items-center gap-4 mb-4'>
                 <div className='flex flex-row gap-1'>
-                    {scrabble.map((l, i) => (
-                        <Letter letter={l} key={`scrabble-${i}`} />
+                    {heading.map((l, i) => (
+                        <Letter letter={l} key={`title-${i}`} />
                     ))}
                 </div>
                 <div className='flex flex-row gap-1'>
-                    {search.map((l, i) => (
-                        <Letter letter={l} key={`search-${i}`} />
+                    {subheading.map((l, i) => (
+                        <Letter letter={l} key={`subtitle-${i}`} />
                     ))}
                 </div>
             </div>
-            <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                Find valid (English) Scrabble words
-            </p>
-            <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className={'text-sm text-gray-600'}>Find valid (English) Scrabble words</p>
+            <p className={'text-xs text-gray-600'}>
                 Not Affiliated with <a href={'https://playscrabble.com/'}>Hasbro&apos;s Scrabble</a>
             </p>
         </div>
