@@ -9,17 +9,8 @@ export const WordCard: FC<WordCardProps> = ({word}) => {
     const value = word.split('').reduce((sum, char) => sum + points[char.toLowerCase().charCodeAt(0) - 97], 0);
 
     return (
-        <div
-            className={
-                'bg-gray-50 hover:bg-gray-100 rounded-lg p-3 transition-colors flex flex-col items-center justify-between'
-            }
-        >
-            <div
-                className={
-                    'flex flex-row justify-center gap-1 p-2 text-gray-800 font-medium text-lg truncate w-full text-center'
-                }
-                title={word}
-            >
+        <div className={'bg-gray-50 hover:bg-gray-100 rounded-lg p-3 flex flex-col items-center justify-between'}>
+            <div className={'flex flex-row justify-center gap-1 p-2 text-lg w-full overflow-x-scroll'} title={word}>
                 {word.split('').map((letter, i) => (
                     <div
                         key={`${word}-${letter}-${i}`}
