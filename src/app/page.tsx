@@ -7,6 +7,8 @@ import {Results} from '@/components/results';
 import {Search} from '@/components/search';
 import {Header} from '@/components/header';
 import {Spinner} from '@nextui-org/react';
+import Link from 'next/link';
+import CalculateIcon from '@mui/icons-material/Calculate';
 
 export default function HomePage() {
     const [query, setQuery] = useState('');
@@ -58,11 +60,15 @@ export default function HomePage() {
             } flex flex-col items-center py-12 px-4 transition-colors duration-200`}
         >
             <div className='flex flex-col items-center w-full'>
-                <div className='absolute top-4 right-4'>
+                <div className='absolute flex justify-center items-center top-4 right-4 gap-4'>
+                    <Link href='/calculator'>
+                        <CalculateIcon fontSize={'large'} />
+                    </Link>
+
                     <ThemeToggle onToggle={handleThemeToggle} />
                 </div>
 
-                <Header isDarkMode={isDarkMode} />
+                <Header title={'scrabble'} subtitle={'search'} isDarkMode={isDarkMode} />
 
                 <Search onChange={handleChange} query={query} />
 
