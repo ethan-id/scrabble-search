@@ -25,6 +25,9 @@ export const Header: FunctionComponent<HeaderProps> = ({isDarkMode}) => {
             <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 Find valid (English) Scrabble words
             </p>
+            <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                Not Affiliated with <a href='https://playscrabble.com/'>Hasbro's Scrabble</a>
+            </p>
         </div>
     );
 };
