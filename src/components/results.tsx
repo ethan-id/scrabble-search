@@ -1,5 +1,4 @@
 import {WordCard} from '@/components/word-card';
-import {points} from '@/literals/points';
 
 interface ResultsProps {
     isDarkMode: boolean;
@@ -20,11 +19,7 @@ export const Results: React.FC<ResultsProps> = ({results, isDarkMode}) => {
             </div>
             <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4'>
                 {results.map((word) => {
-                    const value = word
-                        .split('')
-                        .reduce((sum, char) => sum + points[char.toLowerCase().charCodeAt(0) - 97], 0);
-
-                    return <WordCard key={word} word={word} value={value} isDarkMode={isDarkMode} />;
+                    return <WordCard key={word} word={word} isDarkMode={isDarkMode} />;
                 })}
             </div>
         </div>
