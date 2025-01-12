@@ -12,13 +12,13 @@ export const Header: FunctionComponent<HeaderProps> = ({isDarkMode}) => {
         <div className='text-center mb-8'>
             <div className='flex flex-col items-center gap-4 mb-4'>
                 <div className='flex flex-row gap-1'>
-                    {scrabble.map((l) => (
-                        <Letter letter={l} />
+                    {scrabble.map((l, i) => (
+                        <Letter letter={l} key={`scrabble-${i}`} />
                     ))}
                 </div>
                 <div className='flex flex-row gap-1'>
-                    {search.map((l) => (
-                        <Letter letter={l} />
+                    {search.map((l, i) => (
+                        <Letter letter={l} key={`search-${i}`} />
                     ))}
                 </div>
             </div>
