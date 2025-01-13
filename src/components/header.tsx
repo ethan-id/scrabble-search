@@ -23,7 +23,6 @@ export const Header: FC<HeaderProps> = ({title, subtitle}) => {
                     ))}
                 </div>
             </div>
-            <p className={'text-sm text-gray-600'}>Find valid (English) Scrabble words</p>
             <p className={'text-xs text-gray-600'}>
                 Not Affiliated with <a href={'https://playscrabble.com/'}>Hasbro&apos;s Scrabble</a>
             </p>
