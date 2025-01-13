@@ -1,4 +1,6 @@
 import {Header} from '@/components/header';
+import {points} from '@/literals/points';
+import {ScrabbleBoard} from '@/components/scrabble-board';
 import HomeIcon from '@mui/icons-material/Home';
 import Link from 'next/link';
 
@@ -11,7 +13,9 @@ export default function CalculatorPage() {
                 </Link>
             </div>
             <Header title='scrabble' subtitle='calculator' />
-            This page is currently under construction!
+            <div className='mt-8'>
+                <ScrabbleBoard initialWord='WORD' points={points} />
+            </div>
         </div>
     );
 }
