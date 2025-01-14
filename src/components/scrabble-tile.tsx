@@ -19,7 +19,7 @@ export function ScrabbleTile({letter, state, onClick}: ScrabbleTileProps) {
     return (
         <button
             onClick={onClick}
-            className={`w-12 h-12 ${stateColors[state]} flex items-center justify-center text-lg md:text-xl w-10 md:w-12 h-10 md:h-12 p-4 rounded-lg bg-[#FFDC9F] font-semibold text-black shadow-md`}
+            className={`w-12 h-12 ${stateColors[state]} flex items-center justify-center text-lg md:text-xl w-10 md:w-12 h-10 md:h-12 p-4 rounded-lg font-semibold text-black shadow-md`}
         >
             {letter.toUpperCase()}
         </button>
