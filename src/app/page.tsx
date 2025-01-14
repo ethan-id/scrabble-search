@@ -49,7 +49,7 @@ export default function HomePage() {
             }
         >
             <div className='flex flex-col items-center w-full'>
-                <div className='absolute flex justify-center items-center top-4 right-4 gap-4'>
+                <div className='hidden absolute lg:flex justify-center items-center top-4 right-4 gap-4'>
                     <Link href='/calculator'>
                         <CalculateIcon fontSize={'large'} />
                     </Link>
