@@ -4,9 +4,11 @@ A Search Engine for (English) Scrabble Words
 
 ## Features
 
-- Words are stored in a [Trie](https://en.wikipedia.org/wiki/Trie) data structure
+- Words are searchable by prefix and stored in a [Trie](https://en.wikipedia.org/wiki/Trie) data structure
 - Real-time searching as the user types
     - User's search Input is debounced so that as they type multiple API requests are not made
+- Scrabble Word Value Calculator
+    - Ability to mark bonus tiles
 
 ## Roadmap
 

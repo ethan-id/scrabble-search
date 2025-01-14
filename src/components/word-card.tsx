@@ -1,5 +1,6 @@
 import {FC} from 'react';
 import {points} from '@/literals/points';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 interface WordCardProps {
     word: string;
@@ -20,9 +21,20 @@ export const WordCard: FC<WordCardProps> = ({word}) => {
                     </div>
                 ))}
             </div>
-            <p className={'text-gray-600 text-sm mt-1'}>
-                {value} {value === 1 ? 'point' : 'points'}
-            </p>
+            <div className='flex flex-row gap-4'>
+                <p className={'text-gray-600 text-sm mt-1'}>
+                    {value} {value === 1 ? 'point' : 'points'}
+                </p>
+                <a
+                    className={'flex items-center gap-1 text-gray-600 text-sm mt-1'}
+                    href={`https://www.merriam-webster.com/dictionary/${word}`}
+                    target={'_blank'}
+                    rel={'noopener noreferrer'}
+                >
+                    Definition
+                    <OpenInNewIcon fontSize={'small'} />
+                </a>
+            </div>
         </div>
     );
 };
